@@ -13,6 +13,5 @@ public:
 	Apartment(const Apartment&);
 	~Apartment();
 	friend istream& operator>>(std::istream& input, Apartment& obj);
-
-
+	friend ostream& operator<<(std::ostream& output, Apartment& obj);
 };

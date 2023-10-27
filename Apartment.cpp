@@ -53,3 +53,14 @@ std::istream& operator>>(std::istream& input, Apartment& obj) {
 	obj.cornerApar = (cornerAparS == "Yes");
 	return input;
 }
+std::ostream& operator<<(std::ostream& output, Apartment& obj) {
+	output << "id: " << obj.id << endl;
+	output << "area: " << obj.area << endl;
+	output << "floor: " << obj.floor << endl;
+	output << "number: " << obj.number << endl;
+	output << "number of rooms: " << obj.numOfRooms << endl;
+	output << "street: " << obj.street << endl;
+	output << "Sunny Side: " << (obj.sunSide ? "Yes" : "No") << endl;
+	output << "Corner Apartment: " << (obj.cornerApar ? "Yes" : "No") << endl;
+	return output;
+}

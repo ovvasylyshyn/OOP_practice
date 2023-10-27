@@ -6,4 +6,5 @@ int main() {
 	cout << "Enter Apartment`s data: " << endl;
 	cin >> object1 >> object2 >> object3;
 	cout << "------------" << endl;
+	cout << object1 << endl << object2 << endl << object3 << endl;
 }
