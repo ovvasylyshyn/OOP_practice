@@ -29,3 +29,27 @@ Apartment::Apartment(const Apartment& other) {
 	this->cornerApar = other.cornerApar;
 	this->sunSide = other.sunSide;
 }
+Apartment::~Apartment() {}
+std::istream& operator>>(std::istream& input, Apartment& obj) {
+	cout << "Enter id: " << endl;
+	input >> obj.id;
+	cout << "Enter apartment number: " << endl;
+	input >> obj.number;
+	cout << "Enter area: " << endl;
+	input >> obj.area;
+	cout << "Enter floor: " << endl;
+	input >> obj.floor;
+	cout << "Enter number of rooms: " << endl;
+	input >> obj.numOfRooms;
+	cout << "Enter street: " << endl;
+	input >> obj.street;
+	cout << "Enter sunny side (Yes or No)" << endl;
+	string sunSideS;
+	input >> sunSideS;
+	obj.sunSide = (sunSideS == "Yes");
+	cout << "Enter corner apartment (Yes or No)" << endl;
+	string cornerAparS;
+	input >> cornerAparS;
+	obj.cornerApar = (cornerAparS == "Yes");
+	return input;
+}
