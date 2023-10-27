@@ -64,3 +64,6 @@ std::ostream& operator<<(std::ostream& output, Apartment& obj) {
 	output << "Corner Apartment: " << (obj.cornerApar ? "Yes" : "No") << endl;
 	return output;
 }
+bool Apartment::operator==(const Apartment& apartment) const {
+	return  id == apartment.id && number == apartment.number && area == apartment.area && floor == apartment.floor && numOfRooms == apartment.numOfRooms && street == apartment.street && sunSide == apartment.sunSide && cornerApar == apartment.cornerApar;
+}
