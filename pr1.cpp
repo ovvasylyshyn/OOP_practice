@@ -1,8 +1,9 @@
 ﻿#include <iostream>
 #include "Apartment.h"
+#include "HotelRoom.h"
 using namespace std;
 int main() {
-	Apartment object1, object2, object3;
+	/*Apartment object1, object2, object3;
 	cout << "Enter Apartment`s data: " << endl;
 	cin >> object1 >> object2 >> object3;
 	cout << "------------" << endl;
@@ -24,5 +25,9 @@ int main() {
     }
     else {
         cout << "object1 and object3 aren`t equal." << endl;
-    }
+    }*/
+    HotelRoom hotelRoom;
+    hotelRoom.input();
+    cout << "--------------------------------" << endl;
+    hotelRoom.output();
 }
