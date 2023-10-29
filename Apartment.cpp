@@ -1,69 +1,58 @@
 #include "Apartment.h"
 Apartment::Apartment() {
-	id = 0;
+	/*id = 0;
 	number = 0;
 	floor = 0;
-	numOfRooms = 0;
+	numOfRooms = 0;*/
 	area = 0.0;
-	street = "";
+	//street = "";
 	cornerApar = false;
 	sunSide = false;
 }
 Apartment::Apartment(int id, int number, int floor, int numOfRooms, float area, string street, bool sunSide, bool cornerApar) {
-	this->id = id;
+	/*this->id = id;
 	this->number = number;
 	this->floor = floor;
-	this->numOfRooms = numOfRooms;
+	this->numOfRooms = numOfRooms;*/
 	this->area = area;
-	this->street = street;
+	//this->street = street;
 	this->cornerApar = cornerApar;
 	this->sunSide = sunSide;
 }
 Apartment::Apartment(const Apartment& other) {
-	this->id = other.id;
+	/*this->id = other.id;
 	this->number = other.number;
 	this->floor = other.floor;
-	this->numOfRooms = other.numOfRooms;
+	this->numOfRooms = other.numOfRooms;*/
 	this->area = other.area;
-	this->street = other.street;
+	//this->street = other.street;
 	this->cornerApar = other.cornerApar;
 	this->sunSide = other.sunSide;
 }
 Apartment::~Apartment() {}
 std::istream& operator>>(std::istream& input, Apartment& obj) {
-	cout << "Enter id: " << endl;
-	input >> obj.id;
-	cout << "Enter apartment number: " << endl;
-	input >> obj.number;
-	cout << "Enter area: " << endl;
+	House& housePart = obj; 
+	input >> housePart; 
+	cout << "Enter area: ";
 	input >> obj.area;
-	cout << "Enter floor: " << endl;
-	input >> obj.floor;
-	cout << "Enter number of rooms: " << endl;
-	input >> obj.numOfRooms;
-	cout << "Enter street: " << endl;
-	input >> obj.street;
-	cout << "Enter sunny side (Yes or No)" << endl;
+	cout << "Enter sunny side (Yes or No)";
 	string sunSideS;
 	input >> sunSideS;
 	obj.sunSide = (sunSideS == "Yes");
-	cout << "Enter corner apartment (Yes or No)" << endl;
+	cout << "Enter corner apartment (Yes or No)";
 	string cornerAparS;
 	input >> cornerAparS;
 	obj.cornerApar = (cornerAparS == "Yes");
 	return input;
 }
 std::ostream& operator<<(std::ostream& output, Apartment& obj) {
-	output << "id: " << obj.id << endl;
+	House& house = obj;
+	output<<house;
 	output << "area: " << obj.area << endl;
-	output << "floor: " << obj.floor << endl;
-	output << "number: " << obj.number << endl;
-	output << "number of rooms: " << obj.numOfRooms << endl;
-	output << "street: " << obj.street << endl;
 	output << "Sunny Side: " << (obj.sunSide ? "Yes" : "No") << endl;
 	output << "Corner Apartment: " << (obj.cornerApar ? "Yes" : "No") << endl;
 	return output;
 }
 bool Apartment::operator==(const Apartment& apartment) const {
-	return  id == apartment.id && number == apartment.number && area == apartment.area && floor == apartment.floor && numOfRooms == apartment.numOfRooms && street == apartment.street && sunSide == apartment.sunSide && cornerApar == apartment.cornerApar;
+	return area == apartment.area && sunSide == apartment.sunSide && cornerApar == apartment.cornerApar;
 }

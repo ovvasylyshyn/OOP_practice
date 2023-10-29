@@ -1,11 +1,10 @@
-
 #pragma once
 #include <iostream>
+#include "Apartment.h"
+#include"House.h"
 using namespace std;
-class Apartment {
-	int id, number, floor, numOfRooms;
+class Apartment : public House{
 	float area;
-	string street;
 	bool sunSide, cornerApar;
 public:
 	Apartment();
