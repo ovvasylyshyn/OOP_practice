@@ -21,3 +21,22 @@ ostream& operator<<(std::ostream& output, House& obj) {
 	output << "Street: " << obj.street << endl;
 	return output;
 }
+void House::input() {
+	cout << "Enter id: ";
+	cin >> id;
+	cout << "Enter number: ";
+	cin >>number;
+	cout << "Enter number of rooms: ";
+	cin>>numOfRoom;
+	cout << "Enter floor: ";
+	cin >>floor;
+	cout << "Enter street: ";
+	cin >>street;
+}
+void House::output() {
+	cout << "id: " <<id << endl;
+	cout << "number: " << number << endl;
+	cout << "Number of rooms: " <<numOfRoom << endl;
+	cout << "floor: " << floor << endl;
+	cout << "Street: " <<street << endl;
+}

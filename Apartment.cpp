@@ -56,6 +56,22 @@ std::ostream& operator<<(std::ostream& output, Apartment& obj) {
 bool Apartment::operator==(const Apartment& apartment) const {
 	return area == apartment.area && sunSide == apartment.sunSide && cornerApar == apartment.cornerApar;
 }
-string Apartment::toString() {
-	return "ToString method ";
+void Apartment::input() {
+	House::input();
+	cout << "Enter area: ";
+	cin >> area;
+	cout << "Enter sunny side (Yes or No)";
+	string sunSideS;
+	cin>> sunSideS;
+	sunSide = (sunSideS == "Yes");
+	cout << "Enter corner apartment (Yes or No)";
+	string cornerAparS;
+	cin >> cornerAparS;
+	cornerApar = (cornerAparS == "Yes");
+}
+void Apartment::output() {
+	House::output();
+	cout << "area: " << area << endl;
+	cout << "Sunny Side: " << (sunSide ? "Yes" : "No") << endl;
+	cout << "Corner Apartment: " << (cornerApar ? "Yes" : "No") << endl;
 }

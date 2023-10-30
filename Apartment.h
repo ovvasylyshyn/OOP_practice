@@ -14,5 +14,6 @@ public:
 	friend istream& operator>>(std::istream& input, Apartment& obj);
 	friend ostream& operator<<(std::ostream& output, Apartment& obj);
 	bool operator==(const Apartment& apartment) const;
-	string toString()override;
+	virtual void input() override;
+	virtual void output()override;
 };

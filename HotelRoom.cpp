@@ -19,6 +19,15 @@ ostream& operator<<(std::ostream& output, HotelRoom& obj) {
 bool HotelRoom::operator==(const HotelRoom& hotelRoom) const {
 	return listOfAd == hotelRoom.listOfAd && price == hotelRoom.price;
 }
-string HotelRoom::toString() {
-	return "ToString method ";
+void HotelRoom::input() {
+	House::input();
+	cout << "Enter price per day: ";
+	cin>>price;
+	cout << "Enter additional service: ";
+	cin >> listOfAd;
+}
+void HotelRoom::output() {
+	House::output();
+	cout<< "Price per day: " <<price << " hrn." << endl;
+	cout << "Additional service: " <<listOfAd << endl;
 }
