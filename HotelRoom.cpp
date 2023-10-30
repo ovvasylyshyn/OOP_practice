@@ -1,6 +1,6 @@
 ﻿#include "HotelRoom.h"
 #include "House.h"
-std::istream& operator>>(std::istream& input, HotelRoom& obj) {
+istream& operator>>(std::istream& input, HotelRoom& obj) {
 	House& housePart = obj;
 	input >> housePart;
 	cout << "Enter price per day: ";
@@ -9,7 +9,7 @@ std::istream& operator>>(std::istream& input, HotelRoom& obj) {
 	cin >> obj.listOfAd;
 	return input;
 }
-std::ostream& operator<<(std::ostream& output, HotelRoom& obj) {
+ostream& operator<<(std::ostream& output, HotelRoom& obj) {
 	House& house = obj;
 	output << house;
 	output << "Price per day: " << obj.price <<" grn." << endl;
@@ -18,4 +18,7 @@ std::ostream& operator<<(std::ostream& output, HotelRoom& obj) {
 }
 bool HotelRoom::operator==(const HotelRoom& hotelRoom) const {
 	return listOfAd == hotelRoom.listOfAd && price == hotelRoom.price;
+}
+string HotelRoom::toString() {
+	return "ToString method ";
 }

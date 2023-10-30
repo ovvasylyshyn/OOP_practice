@@ -48,11 +48,14 @@ std::istream& operator>>(std::istream& input, Apartment& obj) {
 std::ostream& operator<<(std::ostream& output, Apartment& obj) {
 	House& house = obj;
 	output<<house;
-	output << "area: " << obj.area << endl;
+	output << "area: " << obj.area    << endl;
 	output << "Sunny Side: " << (obj.sunSide ? "Yes" : "No") << endl;
 	output << "Corner Apartment: " << (obj.cornerApar ? "Yes" : "No") << endl;
 	return output;
 }
 bool Apartment::operator==(const Apartment& apartment) const {
 	return area == apartment.area && sunSide == apartment.sunSide && cornerApar == apartment.cornerApar;
+}
+string Apartment::toString() {
+	return "ToString method ";
 }

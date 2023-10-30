@@ -1,6 +1,6 @@
 
 #include "House.h"
-std::istream& operator>>(std::istream& input, House& obj) {
+istream& operator>>(std::istream& input, House& obj) {
 	cout << "Enter id: ";
 	input >> obj.id;
 	cout << "Enter number: ";
@@ -13,7 +13,7 @@ std::istream& operator>>(std::istream& input, House& obj) {
 	input >> obj.street;
 	return input;
 }
-std::ostream& operator<<(std::ostream& output, House& obj) {
+ostream& operator<<(std::ostream& output, House& obj) {
 	output << "id: " << obj.id << endl;
 	output << "number: " << obj.number << endl;
 	output << "Number of rooms: " << obj.numOfRoom << endl;
