@@ -9,7 +9,7 @@ Apartment::Apartment() {
 	cornerApar = false;
 	sunSide = false;
 }
-Apartment::Apartment(int id, int number, int floor, int numOfRooms, float area, string street, bool sunSide, bool cornerApar) {
+Apartment::Apartment(int id,int number,int floor,int numOfRoom, float area, string street,bool sunSide, bool cornerApar) {
 	/*this->id = id;
 	this->number = number;
 	this->floor = floor;
