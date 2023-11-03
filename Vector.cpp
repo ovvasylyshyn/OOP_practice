@@ -3,22 +3,18 @@ template <typename T>
 Vector<T>::Vector() : size(0), capacity(10) {
     array = new T[capacity];
 }
-
 template <typename T>
 Vector<T>::~Vector() {
     delete[] array;
 }
-
 template <typename T>
 int Vector<T>::getSize() {
     return size;
 }
-
 template <typename T>
 int Vector<T>::getCapacity() {
     return capacity;
 }
-
 template <typename T>
 void Vector<T>::push_back(T element) {
     if (size < capacity) {
@@ -36,14 +32,12 @@ void Vector<T>::push_back(T element) {
     }
     size++;
 }
-
 template <typename T>
 void Vector<T>::pop_back() {
     if (size > 0) {
         size--;
     }
 }
-
 template <typename T>
 T Vector<T>::at(int index) {
     if (index >= 0 && index < size) {
@@ -53,7 +47,6 @@ T Vector<T>::at(int index) {
         return T();
     }
 }
-
 template <typename T>
 T Vector<T>::operator[](int index) {
     return at(index);

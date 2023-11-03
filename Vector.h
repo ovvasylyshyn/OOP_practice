@@ -18,6 +18,5 @@ class Vector
 	void pop_back();
 	T at(int index);
 	T operator[](int index);
-
 };
 
