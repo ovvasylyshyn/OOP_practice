@@ -195,22 +195,6 @@ int main() {
 		delete house;
 	}*/
 	vector<House*> newHouseVector;
-	/*for (House* house : houseVector) {
-		if (dynamic_cast<Apartment*>(house) == nullptr) {
-			newHouseVector.push_back(house);
-		}
-	}*/
-
-	/*for (House* house : houseVector) {
-		delete house;
-	}
-	houseVector.clear();*/
-
-	//// Виводимо вміст обох векторів на екран
-	//cout << "Початковий вектор:" << endl;
-	//for (House* house : houseVector) {
-	//	house->output();
-//}
 	for (auto it = houseVector.begin(); it != houseVector.end();) {
 		if (dynamic_cast<Apartment*>(*it) != nullptr) {
 			delete* it;
@@ -220,13 +204,10 @@ int main() {
 			++it;
 		}
 	}
-
-	cout << "Початковий вектор:" << endl;
+	cout << "Start vector: " << endl;
 	for (House* house : houseVector) {
 		house->output();
 	}
-
-	// Пошук і видалення елементів другого підкласу (HotelRoom) з другого вектора
 	for (auto it = newHouseVector.begin(); it != newHouseVector.end();) {
 		if (dynamic_cast<HotelRoom*>(*it) != nullptr) {
 			delete* it;
@@ -236,14 +217,7 @@ int main() {
 			++it;
 		}
 	}
-
-	// Вивід вмісту обох векторів на екран
-	cout << "Початковий вектор:" << endl;
-	for (House* house : houseVector) {
-		house->output();
-	}
-
-	cout << "Новий вектор:" << endl;
+	cout << "New vector: " << endl;
 	for (House* house : newHouseVector) {
 		house->output();
 	}
