@@ -40,3 +40,7 @@ void House::output() {
 	cout << "floor: " << floor << endl;
 	cout << "Street: " <<street << endl;
 }
+int House::getId()const
+{
+	return id;
+}

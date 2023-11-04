@@ -9,5 +9,6 @@ public:
 	friend ostream& operator<<(std::ostream& output, House& obj);
 	virtual void input();
 	virtual void output();
+	int getId() const;
 };
 

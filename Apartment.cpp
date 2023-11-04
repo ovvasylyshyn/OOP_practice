@@ -75,3 +75,4 @@ void Apartment::output() {
 	cout << "Sunny Side: " << (sunSide ? "Yes" : "No") << endl;
 	cout << "Corner Apartment: " << (cornerApar ? "Yes" : "No") << endl;
 }
+int Apartment::getId() { return House::getId(); }

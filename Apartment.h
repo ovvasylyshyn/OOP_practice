@@ -16,4 +16,5 @@ public:
 	bool operator==(const Apartment& apartment) const;
 	virtual void input() override;
 	virtual void output()override;
+	int getId() ; 
 };
