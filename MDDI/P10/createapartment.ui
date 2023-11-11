@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CreateApartment</class>
+ <widget class="QDialog" name="CreateApartment">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>370</width>
+    <height>337</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="modal">
+   <bool>false</bool>
+  </property>
+  <layout class="QFormLayout" name="formLayout_2">
+   <item row="0" column="0">
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="IdL">
+       <property name="font">
+        <font>
+         <family>Goudy Old Style</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Enter id</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="IdLE"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="NumberL">
+       <property name="font">
+        <font>
+         <family>Goudy Old Style</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Enter number</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="NumberLE"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="NumOofRoomL">
+       <property name="font">
+        <font>
+         <family>Goudy Old Style</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Enter number of rooms</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="NumOfRoomLE"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="AreaL">
+       <property name="font">
+        <font>
+         <family>Goudy Old Style</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Enter area</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="AreaLE"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="StreetL">
+       <property name="font">
+        <font>
+         <family>Goudy Old Style</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Enter street</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="StreetLE"/>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="FloorL">
+       <property name="font">
+        <font>
+         <family>Goudy Old Style</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Enter floor</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLineEdit" name="FloorLE"/>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="CornerL">
+       <property name="font">
+        <font>
+         <family>Goudy Old Style</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Enter corner apartment (Yes/No) </string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QLineEdit" name="CornerLE"/>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="SunL">
+       <property name="font">
+        <font>
+         <family>Goudy Old Style</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Enter sun side (Yes/No)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QLineEdit" name="SunLE"/>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QPushButton" name="pushButton">
+     <property name="font">
+      <font>
+       <family>High Tower Text</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Create</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
