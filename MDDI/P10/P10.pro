@@ -1,6 +1,8 @@
-QT       += core gui
-
+QT       += core gui sql
+QT += sql
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+TARGET = DataBase
+TEMPLATE = app
 
 CONFIG += c++17
 
@@ -17,7 +19,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     outputapartment.cpp \
-    outputhotelroom.cpp
+    outputhotelroom.cpp \
+    sqlitedbmanager.cpp
 
 HEADERS += \
     Apartment.h \
@@ -27,7 +30,8 @@ HEADERS += \
     createhotelroom.h \
     mainwindow.h \
     outputapartment.h \
-    outputhotelroom.h
+    outputhotelroom.h \
+    sqlitedbmanager.h
 
 FORMS += \
     createapartment.ui \

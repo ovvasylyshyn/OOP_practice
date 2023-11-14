@@ -19,13 +19,15 @@
 //bool HotelRoom::operator==(const HotelRoom& hotelRoom) const {
 //	return listOfAd == hotelRoom.listOfAd && price == hotelRoom.price;
 //}
-string HotelRoom::getId() { return House::getId(); }
-int HotelRoom::getNumber() { return House::getNumber(); }
-int HotelRoom::getFloor() { return House:: getFloor(); }
-int HotelRoom::getNumOfRoom() { return House:: getNumOfRoom(); }
-string HotelRoom::getStreet() { return House:: getStreet(); }
-string HotelRoom::getAdd(){return listOfAd; }
-int HotelRoom::getPrice() { return price; }
+//string HotelRoom::getId() { return House::getId(); }
+//int HotelRoom::getNumber() { return House::getNumber(); }
+//int HotelRoom::getFloor() { return House:: getFloor(); }
+//int HotelRoom::getNumOfRoom() { return House:: getNumOfRoom(); }
+//string HotelRoom::getStreet() { return House:: getStreet(); }
+
+string HotelRoom::getAdd()const{return listOfAd; }
+int HotelRoom::getPrice()const { return price; }
+
 HotelRoom::HotelRoom() {
     //    id = 0;
     //    number = 0;

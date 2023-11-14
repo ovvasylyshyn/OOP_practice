@@ -38,11 +38,11 @@ House::~House() {
 
 }
 
-string House::getId() { return id; }
-int House::getNumber() { return number; }
-int House::getFloor() { return floor; }
-int House::getNumOfRoom() { return numOfRoom; }
-string House::getStreet() { return street; }
+string House::getId()const { return id; }
+int House::getNumber()const { return number; }
+int House::getFloor()const { return floor; }
+int House::getNumOfRoom()const { return numOfRoom; }
+string House::getStreet()const { return street; }
 void House::input() {
 	cout << "Enter id: ";
 	cin >> id;
@@ -62,7 +62,4 @@ void House::output() {
 	cout << "floor: " << floor << endl;
 	cout << "Street: " <<street << endl;
 }
-//int House::getId()const
-//{
-//	return id;
-//}
+

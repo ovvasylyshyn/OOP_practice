@@ -8,19 +8,29 @@
 #include "HotelRoom.h"
 #include "outputapartment.h"
 #include "outputhotelroom.h"
+#include "sqlitedbmanager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
+class QSqlTableModel;
+
+class DBManager;
+
+namespace Ui {
+class MainWindow;
+}
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 signals:
-   void addedApartment(QList<Apartment*> apartments);
-   void addedHotelRoom(QList<HotelRoom*> hotelRooms);
+   void addedApartment(SqliteDBManager *sqliteDBManager);
+   void addedHotelRoom(SqliteDBManager *sqliteDBManager);
 public:
+  //  explicit MainWindow(DBManager* dbManager, QWidget* parent = nullptr);
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
@@ -41,9 +51,10 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QList<HotelRoom*> hotelRooms;
-    QList<Apartment*> apartments;
+//    QList<HotelRoom*> hotelRooms;
+//    QList<Apartment*> apartments;
     OutputHotelRoom * outputHotelRoom;
     OutputApartment *outputApartment;
-};
+    SqliteDBManager *sqliteDBManager;
+    };
 #endif // MAINWINDOW_H

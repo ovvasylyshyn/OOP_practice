@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>482</width>
     <height>600</height>
    </rect>
   </property>
@@ -14,136 +14,124 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="verticalWidget_2" native="true">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>130</y>
-      <width>171</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <item>
-      <widget class="QPushButton" name="createPushButton_2">
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Create objects</string>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="gridLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>10</y>
-      <width>231</width>
-      <height>412</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout_2">
-     <item row="3" column="0">
-      <widget class="QLabel" name="floorLabel_2">
-       <property name="text">
-        <string>Enter floor</string>
-       </property>
-      </widget>
-     </item>
-     <item row="10" column="0">
-      <widget class="QLineEdit" name="idLine_2"/>
-     </item>
-     <item row="14" column="0">
-      <widget class="QLineEdit" name="cornerAparLine_2"/>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="numberLabel_2">
-       <property name="text">
-        <string>Enter number</string>
-       </property>
-      </widget>
-     </item>
-     <item row="15" column="0">
-      <widget class="QLabel" name="areaLabel_2">
-       <property name="text">
-        <string>Enter area</string>
-       </property>
-      </widget>
-     </item>
-     <item row="12" column="0">
-      <widget class="QLineEdit" name="sunSideLine_2"/>
-     </item>
-     <item row="5" column="0">
-      <widget class="QLabel" name="streetLabel_2">
-       <property name="text">
-        <string>Enter street</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="0">
-      <widget class="QLineEdit" name="streetLine_2"/>
-     </item>
-     <item row="9" column="0">
-      <widget class="QLabel" name="idLabel_2">
-       <property name="text">
-        <string>Enter ID</string>
-       </property>
-      </widget>
-     </item>
-     <item row="13" column="0">
-      <widget class="QLabel" name="cornerAparLabel_2">
-       <property name="text">
-        <string>Enter corner apartment (Yes/No)</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="0">
-      <widget class="QLabel" name="numOfRoomsLabel_2">
-       <property name="text">
-        <string>Enter number of rooms</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLineEdit" name="numberLine_2"/>
-     </item>
-     <item row="4" column="0">
-      <widget class="QLineEdit" name="floorLine_2"/>
-     </item>
-     <item row="8" column="0">
-      <widget class="QLineEdit" name="numOfRoomsLine_2"/>
-     </item>
-     <item row="11" column="0">
-      <widget class="QLabel" name="sunSideLabel_2">
-       <property name="text">
-        <string>Enter sun side apartment (Yes/No)</string>
-       </property>
-      </widget>
-     </item>
-     <item row="16" column="0">
-      <widget class="QLineEdit" name="areaLine_2"/>
-     </item>
-    </layout>
-   </widget>
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="numberLabel_2">
+        <property name="text">
+         <string>Enter number</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="numberLine_2"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="floorLabel_2">
+        <property name="text">
+         <string>Enter floor</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="floorLine_2"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="streetLabel_2">
+        <property name="text">
+         <string>Enter street</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="streetLine_2"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="numOfRoomsLabel_2">
+        <property name="text">
+         <string>Enter number of rooms</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="numOfRoomsLine_2"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="idLabel_2">
+        <property name="text">
+         <string>Enter ID</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="idLine_2"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="sunSideLabel_2">
+        <property name="text">
+         <string>Enter sun side apartment (Yes/No)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="sunSideLine_2"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="cornerAparLabel_2">
+        <property name="text">
+         <string>Enter corner apartment (Yes/No)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="cornerAparLine_2"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="areaLabel_2">
+        <property name="text">
+         <string>Enter area</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="areaLine_2"/>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1">
+     <widget class="QWidget" name="verticalWidget_2" native="true">
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="createPushButton_2">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Create objects</string>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>482</width>
      <height>21</height>
     </rect>
    </property>

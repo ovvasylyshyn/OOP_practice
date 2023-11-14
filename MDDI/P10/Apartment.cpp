@@ -55,14 +55,16 @@ Apartment::~Apartment() {}
 //bool Apartment::operator==(const Apartment& apartment) const {
 //	return area == apartment.area && sunSide == apartment.sunSide && cornerApar == apartment.cornerApar;
 //}
-string Apartment::getId(){return House::getId();}
-int Apartment::getNumber() { return House::getNumber(); }
-int Apartment::getFloor() { return House:: getFloor(); }
-int Apartment::getNumOfRoom() { return House:: getNumOfRoom(); }
-string Apartment::getStreet() { return House:: getStreet(); }
-string Apartment::getCornerApar() { return cornerApar; }
-string Apartment::getSunSide(){return sunSide; }
-int Apartment::getArea() { return area; }
+//string Apartment::getId(){return House::getId();}
+//int Apartment::getNumber() { return House::getNumber(); }
+//int Apartment::getFloor() { return House:: getFloor(); }
+//int Apartment::getNumOfRoom() { return House:: getNumOfRoom(); }
+//string Apartment::getStreet() { return House:: getStreet(); }
+
+
+string Apartment::getCornerApar() const { return cornerApar; }
+string Apartment::getSunSide()const {return sunSide; }
+int Apartment::getArea()const { return area; }
 void Apartment::input() {
     House::input();
     cout << "Enter area: ";

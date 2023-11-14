@@ -5,6 +5,7 @@
 #include "outputapartment.h"
 #include"createhotelroom.h"
 #include "outputhotelroom.h"
+#include "sqlitedbmanager.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -15,9 +16,12 @@ MainWindow::MainWindow(QWidget *parent)
     this->outputApartment->setWindowTitle("Output apartment");
     this->outputHotelRoom = new OutputHotelRoom;
     this->outputHotelRoom->setWindowTitle("Output Hotel room");
+    this->sqliteDBManager = new SqliteDBManager;
+    sqliteDBManager->connectToDataBase();
+    sqliteDBManager->createTables();
 }
 
-MainWindow::~MainWindow()
+ MainWindow::~MainWindow()
 {
     delete ui;
 }
@@ -40,35 +44,36 @@ void MainWindow::on_OutputAPb_clicked()
 
 void MainWindow::addApartment(Apartment *apartment)
 {
-     apartments.append(apartment);
-     emit addedApartment(this->apartments);
+     sqliteDBManager->inserIntoTable(*apartment);
+     emit addedApartment(this->sqliteDBManager);
 }
 
 void MainWindow::on_ExitPb_clicked()
 {
      QApplication::exit();
-}
-
-
-void MainWindow::on_CreateHPb_clicked()
-{
-    CreateHotelRoom  createHotelRoom;
-     createHotelRoom.setWindowTitle("create hoel room");
-     createHotelRoom.setModal(true);
-     connect(&createHotelRoom, &CreateHotelRoom::created, this, &MainWindow::addHotelRoom);
-     connect(this,&MainWindow::addedHotelRoom, this->outputHotelRoom, &OutputHotelRoom::updateList);
-     createHotelRoom.exec();
+      sqliteDBManager->closeDataBase();
 }
 
 void MainWindow::addHotelRoom(HotelRoom *hotelRoom)
 {
-     hotelRooms.append(hotelRoom);
-     emit addedHotelRoom(this->hotelRooms);
+      sqliteDBManager->inserIntoTable(*hotelRoom);
+     emit addedHotelRoom(this->sqliteDBManager);
 }
 
 
 void MainWindow::on_OutputHPb_clicked()
 {
   this->outputHotelRoom->show();
+
 }
 
+
+void MainWindow::on_CreateHPb_clicked()
+{
+  CreateHotelRoom  createHotelRoom;
+  createHotelRoom.setWindowTitle("create hotel room");
+  createHotelRoom.setModal(true);
+  connect(&createHotelRoom, &CreateHotelRoom::created, this, &MainWindow::addHotelRoom);
+  connect(this,&MainWindow::addedHotelRoom, this->outputHotelRoom, &OutputHotelRoom::updateList);
+  createHotelRoom.exec();
+}

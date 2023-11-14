@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include "HotelRoom.h"
-
+#include "sqlitedbmanager.h"
 namespace Ui {
 class OutputHotelRoom;
 }
@@ -13,7 +13,7 @@ class OutputHotelRoom : public QDialog
     Q_OBJECT
 
 public slots:
-    void updateList(QList<HotelRoom*> hotelRoom);
+    void updateList(SqliteDBManager* sqliteDBManager);
 public:
     explicit OutputHotelRoom(QWidget *parent = nullptr);
     ~OutputHotelRoom();

@@ -16,13 +16,13 @@ public:
 	bool operator==(const HotelRoom& hotelRoom) const;
      void input() override ;
      void output() override;
-     string getId()override ;
-     int getNumber()override ;
-     int getNumOfRoom()override ;
-     int getFloor()override ;
-     int getPrice() ;
-     string getStreet()override ;
-     string getAdd();
-     string toString() override;
+//     string getId()override ;
+//     int getNumber()override ;
+//     int getNumOfRoom()override ;
+//     int getFloor()override ;
+     int getPrice() const ;
+    // string getStreet()override ;
+     string getAdd() const;
+    string toString() override;
 };
 
