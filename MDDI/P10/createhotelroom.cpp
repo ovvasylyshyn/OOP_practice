@@ -29,7 +29,8 @@ void CreateHotelRoom::on_CreateHotelRoomPB_clicked()
             QTextStream stream(&file);
             stream << "\n\n\n" + QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss") + ": " + "Can`t write data.";
         }
-        file.close();qWarning() << "You`ve not fill all fiels";
+        file.close();
+        qWarning() << "You`ve not fill all fiels";
         QMessageBox::critical(this, "Warning!", "You have a free fields!");
 
     }else{

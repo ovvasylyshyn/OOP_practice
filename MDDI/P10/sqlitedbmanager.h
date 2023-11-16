@@ -27,7 +27,7 @@ public:
     const QString TABLE_CORNER_APAR = "cornerApar";
     const QString TABLE_PRICE = "price";
     const QString TABLE_LIST_OF_ADD = "listOfAdd";
-    void closeDataBase();
+    bool closeDataBase();
     bool createTables_a();
      bool createTables_h();
     bool createTables();

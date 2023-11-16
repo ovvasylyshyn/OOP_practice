@@ -5,49 +5,62 @@
 #include <QFile>
 #include <QDateTime>
 
-void logError(QString errorText) {
-    QFile file("logfile.txt");
-    if (file.open(QIODevice::Append)) {
-        QTextStream stream(&file);
-        stream << "\n\n\n" + QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss") + ": " + errorText;
-    }
-    file.close();
-}
-
 SqliteDBManager::SqliteDBManager()
 {   this-> db = QSqlDatabase::addDatabase("QSQLITE");
     db.setHostName("ExampleDataBase");
     this-> db.setDatabaseName("DataBase.db");
-    if (!this->connectToDataBase()) {
-        logError("Error. Error description: " + db.lastError().text());
-        qFatal() << "Error. Error description: " + db.lastError().text();
+        QFile logfile("logfile.txt");
+        if (logfile.open(QIODevice::WriteOnly | QIODevice::Append)) {
+              if (!this->connectToDataBase()) {
+            QTextStream output(&logfile);
+            output << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss") + ": " << " not conected "  << "\n";
+    } else {
+            QTextStream output(&logfile);
+            output<<QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss") + ": "<< "conected to database"  << "\n";
+    logfile.close();}
     }
-}
+    }
+
 
 bool SqliteDBManager::connectToDataBase() {
+    try{
     if(db.open()){
         return true;
     } else
         return false;
-}
+    } catch  (QSqlError error) {
+    qDebug() << error.text();
+    exit(1);
+    }}
 
 
 QSqlDatabase SqliteDBManager::getDB() {
     return db;
 }
 
+bool SqliteDBManager::closeDataBase() {
+    QFile logfile("logfile.txt");
+    if (logfile.open(QIODevice::WriteOnly | QIODevice::Append)) {
+    QTextStream output(&logfile);
+    output << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss") + ": ";
 
-void SqliteDBManager::closeDataBase() {
-    db.close();
-    if (this->db.lastError().text() != "") {
-        logError("Unable to close database. Error description: " + this->db.lastError().text());
-        qWarning() << "Unable to close database. Error description: " + this->db.lastError().text();
+    if (db.isOpen()) {
+        db.close();
+        output << "database closed\n";
+        return true;
+    } else {
+        output << "database not closed\n";
+        return false;
     }
+    }
+    return false;
 }
+
 
 bool SqliteDBManager::createTables_a() {
     QSqlQuery query;
-    if (!query.exec("CREATE TABLE " + APARTMENT_NAME + " ("
+    try{
+        if (!query.exec("CREATE TABLE" + APARTMENT_NAME + " ("
                                                        "id VARCHAR(255) PRIMARY KEY,"
                                                        "number INTEGER NOT NULL,"
                                                        "floor INTEGER NOT NULL,"
@@ -57,17 +70,25 @@ bool SqliteDBManager::createTables_a() {
                                                        "sunSide VARCHAR(255) NOT NULL,"
                                                        "cornerApar VARCHAR(255) NOT NULL"
                                                        ")")) {
-        logError("Unable to create table: " + this->APARTMENT_NAME + ". Error description: " + query.lastError().text());
-        qWarning() << "Unable to create table: " + this->APARTMENT_NAME + ". Error description: " + query.lastError().text();
+        QFile logfile("logfile.txt");
+        if (logfile.open(QIODevice::WriteOnly | QIODevice::Append)) {
+            QTextStream output(&logfile);
+            output << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss") + ": " << "Can`t create table apartment " << "\n";
+            logfile.close();
+        }
+        }
+        else {
+        return true;
+        }
+    } catch (QSqlError error) {
+        qDebug() << error.text();
         return false;
-    }
-    qDebug() << "DataBase: Table " << HOTELROOM_NAME_TABLE << " created successfully at "
-             << QDateTime::currentDateTime().toString();
-    return true;
+}
 }
 
 bool SqliteDBManager::createTables_h() {
     QSqlQuery query;
+try{
     if (!query.exec("CREATE TABLE " + HOTELROOM_NAME_TABLE + " ("
                                                              "id VARCHAR(255) PRIMARY KEY,"
                                                              "number INTEGER NOT NULL,"
@@ -77,36 +98,44 @@ bool SqliteDBManager::createTables_h() {
                                                              "street VARCHAR(255) NOT NULL,"
                                                              "listOfAdd VARCHAR(255)"
                                                              ")")) {
-        logError("Unable to create table " + this->HOTELROOM_NAME_TABLE + ". Error description: " + query.lastError().text());
-        qWarning() << "Unable to create table " + this->HOTELROOM_NAME_TABLE + ". Error description: " + query.lastError().text();
+        QFile logfile("logfile.txt");
+        if (logfile.open(QIODevice::WriteOnly | QIODevice::Append)) {
+            QTextStream output(&logfile);
+            output  << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss") + ": "<< "Can`t create table hotelRoom " << "\n";
+            logfile.close();
+        }
+        }
+        else {
+        return true;
+        }
+} catch (QSqlError error) {
+        qDebug() << error.text();
         return false;
-    }
-    qDebug() << "DataBase: Table " << HOTELROOM_NAME_TABLE << " created successfully at "
-             << QDateTime::currentDateTime().toString();
-    return true;
+}
 }
 
 bool SqliteDBManager::createTables()
 {
-    bool success = true;
+    bool create = true;
     QSqlQuery queryApartment;
     queryApartment.exec();
 
     if (!queryApartment.next()) {
-        success = createTables_a();
+        create = createTables_a();
     }
 
     QSqlQuery queryHotelRoom;
     queryHotelRoom.exec();
 
     if (!queryHotelRoom.next()) {
-        success = createTables_h();
+        create = createTables_h();
     }
-    return success;
+    return create;
 }
 
 bool SqliteDBManager::inserIntoTable(const Apartment& apartment) {
-        QSqlQuery query;
+    try{
+    QSqlQuery query;
         query.prepare("INSERT INTO " + APARTMENT_NAME + " (" +
                       TABLE_ID + ", " +
                       TABLE_NUMBER + ", " +
@@ -126,23 +155,26 @@ bool SqliteDBManager::inserIntoTable(const Apartment& apartment) {
         query.bindValue(":street", QString::fromStdString(apartment.getStreet()));
         query.bindValue(":sunSide", QString::fromStdString(apartment.getSunSide()));
         query.bindValue(":cornerApar", QString::fromStdString(apartment.getCornerApar()));
-        try {
         if (!query.exec()) {
-            logError("Unable to insert into table " + this->APARTMENT_NAME + ". Error description: " + query.lastError().text());
-            qWarning() << "Unable to insert into table " + this->APARTMENT_NAME + ". Error description: " + query.lastError().text();
-            return false;
-        } else {
-            return true;
+        QFile logfile("logfile.txt");
+        if (logfile.open(QIODevice::WriteOnly | QIODevice::Append)) {
+        QTextStream output(&logfile);
+        output  << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss") + ": " << "Can`t insert in " + APARTMENT_NAME << "\n";
+        output << query.lastError().text() << "\n";
+        logfile.close();
         }
-        } catch (const exception& e) {
-        qDebug() << "Exception caught: " << e.what();
+        }
+        return true;
+    } catch (QSqlError error) {
+        qDebug() << error.text();
         return false;
-        }
+}
 }
 
 
 bool SqliteDBManager::inserIntoTable(const HotelRoom& hotelRoom) {
-        QSqlQuery query;
+try{
+    QSqlQuery query;
         query.prepare("INSERT INTO " + HOTELROOM_NAME_TABLE + " (" +
                       TABLE_ID + ", " +
                       TABLE_NUMBER + ", " +
@@ -160,17 +192,19 @@ bool SqliteDBManager::inserIntoTable(const HotelRoom& hotelRoom) {
         query.bindValue(":street", QString::fromStdString(hotelRoom.getStreet()));
         query.bindValue(":listOfAdd", QString::fromStdString(hotelRoom.getAdd()));
 
-        try {
         if (!query.exec()) {
-            logError("Unable to insert into table " + this->HOTELROOM_NAME_TABLE + ". Error description: " + query.lastError().text());
-            qWarning() << "Unable to insert into table " + this->HOTELROOM_NAME_TABLE + ". Error description: " + query.lastError().text();
-            return false;
-        } else {
-            return true;
+        QFile logfile("logfile.txt");
+        if (logfile.open(QIODevice::WriteOnly | QIODevice::Append)) {
+        QTextStream output(&logfile);
+        output  << QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss") + ": " << "Can`t insert in " + HOTELROOM_NAME_TABLE << "\n";
+        output << query.lastError().text() << "\n";
+        logfile.close();
         }
-        } catch (const exception& e) {
-        qDebug() << "Exception caught: " << e.what();
+        }
+        return true;
+} catch (QSqlError error) {
+        qDebug() << error.text();
         return false;
-        }
+}
 }
 
